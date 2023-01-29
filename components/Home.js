@@ -16,7 +16,7 @@ function Home() {
   const [dataExist, setDataExist] = useState(false);
   useEffect(() => {
     fetch(
-      `https://newsapi.org/v2/everything?sources=the-verge&apiKey=76288293134a4616865d8e75b883b3dd`
+      `https://newsapi.org/v2/everything?sources=the-verge&apiKey=${process.env.KEY_API}`
     )
       .then((response) => response.json())
       .then((data) => {
