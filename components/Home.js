@@ -1,24 +1,20 @@
 import styles from "../styles/Home.module.css";
 import Header from "./Header";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { addToBookmark } from "../reducers/bookmark";
-
-
 
 import { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 function Home() {
-  
   let styleSpan = {};
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [articlesData, setArticlesData] = useState([]);
   const dispatch = useDispatch();
   const [dataExist, setDataExist] = useState(false);
-
   useEffect(() => {
-
     fetch(
       `https://newsapi.org/v2/everything?sources=the-verge&apiKey=76288293134a4616865d8e75b883b3dd`
     )
@@ -42,8 +38,12 @@ function Home() {
             onClick={() => {
               addToBk();
             }}
-            className={styles.save}
-          ></span>
+          >
+            <FontAwesomeIcon
+              icon={faBookmark}
+              className={styles.save}
+            ></FontAwesomeIcon>
+          </span>
           <img src={data.urlToImage} alt={data.title}></img>
           <div>
             <marquee direction="left">
@@ -64,6 +64,7 @@ function Home() {
         </main>
       </div>
     );
+  } else {
   }
 }
 

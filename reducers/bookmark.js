@@ -1,23 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	value: [],
+  value: [],
 };
 
-
 export const bookmarkSlice = createSlice({
-	name: 'bookmark',
-	initialState,
-	reducers: {
-		addToBookmark: (state, action) => {
-           
-            state.value.push(action.payload);
-        }, 
-       
-
-    
-	},
+  name: "bookmark",
+  initialState,
+  reducers: {
+    addToBookmark: (state, action) => {
+      state.value.push(action.payload);
+    },
+    removeBookmark: (state, action) => {
+      state.value = state.value.filter(
+        (bookmark) => bookmark.title !== action.payload.title
+      );
+    },
+  },
 });
 
-export const {addToBookmark} = bookmarkSlice.actions;
+export const { addToBookmark , removeBookmark} = bookmarkSlice.actions;
 export default bookmarkSlice.reducer;
